@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net451;netcoreapp1.1</TargetFrameworks>
+    <Authors>Harry McIntyre</Authors>
+    <Title>ValueOf - Easy 'One-Liner' Value Objects for c#. Get over your Primitive Obsession!</Title>
+    <Company>Harry McIntyre</Company>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Product>Harry McIntyre</Product>
+    <Description>Declare Value Objects in one line  e.g. `class ClientRef : ValueOf&lt;string, ClientRef&gt; { }`), create using `ClientRef.From(someString)`
+The base Type ValueOf&lt;TValue, TThis&gt;, provides Equals, GetHashcode.
+Use ValueTuples for multi property values e.g `class Address : ValueOf&lt;(string firstLine, string secondLine, Postcode postcode), Address&gt; {}`
+</Description>
+    <PackageProjectUrl>https://github.com/mcintyre321/ValueOf/</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/mcintyre321/ValueOf/blob/master/licence.md</PackageLicenseUrl>
+    <PackageTags>Value Object, ValueObject, DDD, Primitive Obsession, Domain Modelling</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>ValueOf</PackageId>
+    <Copyright>Harry McIntyre</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+
+</Project>
