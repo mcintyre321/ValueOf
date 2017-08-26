@@ -56,5 +56,10 @@ namespace ValueOf
         {
             return EqualityComparer<TValue>.Default.GetHashCode(Value);
         }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 }
