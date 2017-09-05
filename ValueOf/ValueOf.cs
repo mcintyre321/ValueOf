@@ -56,5 +56,21 @@ namespace ValueOf
         {
             return EqualityComparer<TValue>.Default.GetHashCode(Value);
         }
+
+        public static bool operator ==(ValueOf<TValue, TThis> a, ValueOf<TValue, TThis> b)
+        {
+            if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
+                return true;
+
+            if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+                return false;
+
+            return a.Equals(b);
+        }
+
+        public static bool operator !=(ValueOf<TValue, TThis> a, ValueOf<TValue, TThis> b)
+        {
+            return !(a == b);
+        }
     }
 }
