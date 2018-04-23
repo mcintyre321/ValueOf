@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net451;netcoreapp1.1</TargetFrameworks>
+    <TargetFrameworks>net451;netcoreapp1.1;netstandard1.3</TargetFrameworks>
     <Authors>Harry McIntyre</Authors>
     <Title>ValueOf - Easy 'One-Liner' Value Objects for c#. Get over your Primitive Obsession!</Title>
     <Company>Harry McIntyre</Company>
