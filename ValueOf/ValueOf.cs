@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -21,7 +22,7 @@ namespace ValueOf
 
         static ValueOf()
         {
-            var ctor = typeof(TThis).GetTypeInfo().GetConstructor(new Type[0]);
+            var ctor = typeof(TThis).GetTypeInfo().DeclaredConstructors.First();
             Expression[] argsExp = new Expression[0];
             NewExpression newExp = Expression.New(ctor, argsExp);
             LambdaExpression lambda = Expression.Lambda(typeof(Func<TThis>), newExp);
