@@ -10,29 +10,27 @@
 
 ValueOf lets you define ValueObject Types in a single line of code. Use them everywhere to strengthen your codebase.
 
-```
+```csharp
 public class EmailAddress : ValueOf<string, EmailAddress> { }
 
 ...
 
 EmailAddress emailAddress = EmailAddress.From("foo@bar.com");
-
 ```
 
 The ValueOf class implements `.Equals` and `.GetHashCode()` for you.
 
 You can use C# 7 Tuples for more complex Types with multiple values:
 
-```
-    public class Address : ValueOf<(string firstLine, string secondLine, Postcode postcode), Address> { }
-
+```csharp
+public class Address : ValueOf<(string firstLine, string secondLine, Postcode postcode), Address> { }
 ```
 
 ### Validation
 
 You can add validation to your Types by overriding the `protected void Validate() { } ` method:
 
-```
+```csharp
 public class ValidatedClientRef : ValueOf<string, ValidatedClientRef>
 {
     protected override void Validate()
@@ -41,8 +39,19 @@ public class ValidatedClientRef : ValueOf<string, ValidatedClientRef>
             throw new ArgumentException("Value cannot be null or empty");
     }
 }	
-
 ```
+
+### Serialization and Deserialization
+
+When serializing and deserilizing your types, e.g. with `Newtonsoft.Json` you need to give the serializer a hint that he knows how to correctly serialize and deserialize the types.
+`ValueOfTpeConverter` does that for you in a generic way by simply adding an attribute to your type:
+
+```csharp
+[TypeConverter(typeof(ValueOfTypeConverter<string, ClientId>))]
+public class ClientId : ValueOf<string, ClientId> { }
+```
+
+With this `TypeConverter` attribute in place, the `ClientId` gets serialized to a `string` and a `string` gets deserialized into a `ClientId` type.
 
 ## See Also
 
