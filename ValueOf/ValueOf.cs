@@ -45,7 +45,7 @@ namespace ValueOf
         }
 
 
-        protected bool Equals(ValueOf<TValue, TThis> other)
+        protected virtual bool Equals(ValueOf<TValue, TThis> other)
         {
             return EqualityComparer<TValue>.Default.Equals(Value, other.Value);
         }
