@@ -44,6 +44,21 @@ public class ValidatedClientRef : ValueOf<string, ValidatedClientRef>
 
 ```
 
+### Factory for creating your Types
+
+You can override the `protected TValue Create(TValue item) { } ` method, if you want to perform some logic when creating your types:
+
+```
+public class ProductId : ValueOf<string, ProductId>
+{
+    protected override string Create(string item)
+    {
+        return item?.ToLower();
+    }
+}
+
+```
+
 ## See Also
 
 If you liked this, you'll probably like another project of mine [OneOf](https://github.com/mcintyre321/OneOf) which provides Discriminated Unions for C#, allowing stronger compile time guarantees when writing branching logic.

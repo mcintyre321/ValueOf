@@ -20,6 +20,11 @@ namespace ValueOf
         {
         }
 
+        protected virtual TValue Create(TValue item)
+        {
+            return item;
+        }
+
         static ValueOf()
         {
             var ctor = typeof(TThis).GetTypeInfo().DeclaredConstructors.First();
@@ -34,7 +39,7 @@ namespace ValueOf
         public static TThis From(TValue item)
         {
             var x = Factory();
-            x.Value = item;
+            x.Value = x.Create(item);
             x.Validate();
             return x;
         }
