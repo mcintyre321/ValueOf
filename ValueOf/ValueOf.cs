@@ -13,7 +13,7 @@ namespace ValueOf
         /// <summary>
         /// WARNING - THIS FEATURE IS EXPERIMENTAL. I may change it to do
         /// validation in a different way.
-        /// Right now, override this method, and throw any exceptionsn you need to.
+        /// Right now, override this method, and throw any exceptions you need to.
         /// Access this.Value to check the value
         /// </summary>
         protected virtual void Validate()
@@ -22,10 +22,15 @@ namespace ValueOf
 
         static ValueOf()
         {
-            var ctor = typeof(TThis).GetTypeInfo().DeclaredConstructors.First();
-            Expression[] argsExp = new Expression[0];
+            ConstructorInfo ctor = typeof(TThis)
+                .GetTypeInfo()
+                .DeclaredConstructors
+                .First();
+
+            var argsExp = new Expression[0];
             NewExpression newExp = Expression.New(ctor, argsExp);
             LambdaExpression lambda = Expression.Lambda(typeof(Func<TThis>), newExp);
+
             Factory = (Func<TThis>)lambda.Compile();
         }
 
@@ -33,12 +38,12 @@ namespace ValueOf
 
         public static TThis From(TValue item)
         {
-            var x = Factory();
+            TThis x = Factory();
             x.Value = item;
             x.Validate();
+
             return x;
         }
-
 
         protected virtual bool Equals(ValueOf<TValue, TThis> other)
         {
@@ -47,10 +52,13 @@ namespace ValueOf
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((ValueOf<TValue, TThis>) obj);
+            if (obj is null)
+                return false;
+
+            if (ReferenceEquals(this, obj))
+                return true;
+
+            return obj.GetType() == GetType() && Equals((ValueOf<TValue, TThis>)obj);
         }
 
         public override int GetHashCode()
@@ -60,10 +68,10 @@ namespace ValueOf
 
         public static bool operator ==(ValueOf<TValue, TThis> a, ValueOf<TValue, TThis> b)
         {
-            if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
+            if (a is null && b is null)
                 return true;
 
-            if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+            if (a is null || b is null)
                 return false;
 
             return a.Equals(b);
