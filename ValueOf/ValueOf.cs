@@ -82,6 +82,16 @@ namespace ValueOf
             return !(a == b);
         }
 
+        public static bool operator ==(ValueOf<TValue, TThis> a, object b)
+        {
+            return b is TThis other && a == other;
+        }
+
+        public static bool operator !=(ValueOf<TValue, TThis> a, object b)
+        {
+            return !(a == b);
+        }
+
         public static implicit operator TValue(ValueOf<TValue, TThis> a)
         {
             return a.Value;
