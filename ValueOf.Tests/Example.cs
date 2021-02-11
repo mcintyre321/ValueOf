@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System.ComponentModel;
+using System.Globalization;
+using NUnit.Framework;
 
 namespace ValueOf.Tests
 {
@@ -32,6 +34,16 @@ namespace ValueOf.Tests
             Address address3 = Address.From(("17 Food Street", "London", Postcode.From("N1 1LT")));
             Assert.AreNotEqual(address1, address3);
             Assert.AreNotEqual(address1.GetHashCode(), address3.GetHashCode());
+        }
+    
+        [Test]
+        public void TypeConverterExample()
+        {
+            var converter = TypeDescriptor.GetConverter(typeof(ClientRef));
+            Assert.IsTrue(converter.CanConvertFrom(null, typeof(string)));
+            var converted = converter.ConvertFrom(null, CultureInfo.CurrentCulture, "me");
+            Assert.IsInstanceOf<ClientRef>(converted);
+            Assert.AreEqual((converted as ClientRef).Value, "me");
         }
     }
 }
