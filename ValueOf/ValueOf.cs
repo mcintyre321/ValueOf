@@ -82,10 +82,7 @@ namespace ValueOf
             return !(a == b);
         }
 
-        public static implicit operator TValue(ValueOf<TValue, TThis> a)
-        {
-            return a.Value;
-        }
+        // Implicit operator removed. See issue #14.
 
         public override string ToString()
         {
