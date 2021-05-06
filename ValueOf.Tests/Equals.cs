@@ -27,7 +27,7 @@ namespace ValueOf.Tests
             Assert.AreEqual(clientRef1, clientRef2);
             Assert.AreEqual(clientRef1.GetHashCode(), clientRef2.GetHashCode());
             Assert.IsTrue(clientRef1 == clientRef2);
-            Assert.IsTrue(clientRef1 == "ASDF12345");
+            Assert.IsTrue(clientRef1.Value == "ASDF12345");
 
             CaseInsensitiveClientRef clientRef3 = CaseInsensitiveClientRef.From("QWER98765");
             Assert.AreNotEqual(clientRef1, clientRef3);
