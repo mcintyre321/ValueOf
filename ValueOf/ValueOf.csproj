@@ -20,6 +20,7 @@ Use ValueTuples for multi property values e.g `class Address : ValueOf&lt;(strin
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
   </ItemGroup>
 
 </Project>
