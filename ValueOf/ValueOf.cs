@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace ValueOf
 {
-    public class ValueOf<TValue, TThis> where TThis : ValueOf<TValue, TThis>, new()
+    public class ValueOf<TValue, TThis> : IValueOf<TValue, TThis> where TThis : ValueOf<TValue, TThis>, new()
     {
         private static readonly Func<TThis> Factory;
 
