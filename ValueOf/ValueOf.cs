@@ -20,6 +20,11 @@ namespace ValueOf
         {
         }
 
+        protected virtual bool TryValidate()
+        {
+            return true;
+        }
+
         static ValueOf()
         {
             ConstructorInfo ctor = typeof(TThis)
@@ -43,6 +48,18 @@ namespace ValueOf
             x.Validate();
 
             return x;
+        }
+
+        public static bool TryFrom(TValue item, out TThis thisValue)
+        {
+            TThis x = Factory();
+            x.Value = item;
+
+            thisValue = x.TryValidate()
+               ? x
+               : null;
+
+            return thisValue != null;
         }
 
         protected virtual bool Equals(ValueOf<TValue, TThis> other)
