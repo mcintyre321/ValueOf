@@ -18,6 +18,7 @@ Use ValueTuples for multi property values e.g `class Address : ValueOf&lt;(strin
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>ValueOf</PackageId>
     <Copyright>Harry McIntyre</Copyright>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
