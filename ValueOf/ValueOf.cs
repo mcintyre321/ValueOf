@@ -30,7 +30,7 @@ namespace ValueOf
             ConstructorInfo ctor = typeof(TThis)
                 .GetTypeInfo()
                 .DeclaredConstructors
-                .First();
+                .First(ctr => !ctr.IsStatic);
 
             var argsExp = new Expression[0];
             NewExpression newExp = Expression.New(ctor, argsExp);
