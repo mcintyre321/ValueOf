@@ -25,8 +25,10 @@ namespace ValueOf
 
         public static TThis From(TValue item)
         {
-            TThis x = new();
-            x.Value = item;
+            TThis x = new()
+            {
+                Value = item
+            };
             x.Validate();
 
             return x;
@@ -34,8 +36,10 @@ namespace ValueOf
 
         public static bool TryFrom(TValue item, out TThis thisValue)
         {
-            TThis x = new();
-            x.Value = item;
+            TThis x = new()
+            {
+                Value = item
+            };
 
             thisValue = x.TryValidate()
                ? x
