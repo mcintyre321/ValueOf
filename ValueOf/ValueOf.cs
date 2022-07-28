@@ -1,15 +1,9 @@
-﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
 
 namespace ValueOf
 {
     public class ValueOf<TValue, TThis> where TThis : ValueOf<TValue, TThis>, new()
     {
-        private static readonly Func<TThis> Factory;
-
         /// <summary>
         /// WARNING - THIS FEATURE IS EXPERIMENTAL. I may change it to do
         /// validation in a different way.
@@ -27,24 +21,16 @@ namespace ValueOf
 
         static ValueOf()
         {
-            ConstructorInfo ctor = typeof(TThis)
-                .GetTypeInfo()
-                .DeclaredConstructors
-                .First();
-
-            var argsExp = new Expression[0];
-            NewExpression newExp = Expression.New(ctor, argsExp);
-            LambdaExpression lambda = Expression.Lambda(typeof(Func<TThis>), newExp);
-
-            Factory = (Func<TThis>)lambda.Compile();
         }
 
         public TValue Value { get; protected set; }
 
         public static TThis From(TValue item)
         {
-            TThis x = Factory();
-            x.Value = item;
+            TThis x = new TThis()
+            {
+                Value = item
+            };
             x.Validate();
 
             return x;
@@ -52,8 +38,10 @@ namespace ValueOf
 
         public static bool TryFrom(TValue item, out TThis thisValue)
         {
-            TThis x = Factory();
-            x.Value = item;
+            TThis x = new TThis()
+            {
+                Value = item
+            };
 
             thisValue = x.TryValidate()
                ? x
