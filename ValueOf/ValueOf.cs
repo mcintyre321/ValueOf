@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ValueOf
 {
     public class ValueOf<TValue, TThis> where TThis : ValueOf<TValue, TThis>, new()
@@ -25,7 +27,7 @@ namespace ValueOf
 
         public static TThis From(TValue item)
         {
-            TThis x = new()
+            TThis x = new TThis()
             {
                 Value = item
             };
@@ -36,7 +38,7 @@ namespace ValueOf
 
         public static bool TryFrom(TValue item, out TThis thisValue)
         {
-            TThis x = new()
+            TThis x = new TThis()
             {
                 Value = item
             };
