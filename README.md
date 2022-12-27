@@ -10,7 +10,7 @@
 
 ValueOf lets you define ValueObject Types in a single line of code. Use them everywhere to strengthen your codebase.
 
-```
+```csharp
 public class EmailAddress : ValueOf<string, EmailAddress> { }
 
 ...
@@ -23,7 +23,7 @@ The ValueOf class implements `.Equals` and `.GetHashCode()` for you.
 
 You can use C# 7 Tuples for more complex Types with multiple values:
 
-```
+```csharp
     public class Address : ValueOf<(string firstLine, string secondLine, Postcode postcode), Address> { }
 
 ```
@@ -32,7 +32,7 @@ You can use C# 7 Tuples for more complex Types with multiple values:
 
 You can add validation to your Types by overriding the `protected void Validate() { } ` method:
 
-```
+```csharp
 public class ValidatedClientRef : ValueOf<string, ValidatedClientRef>
 {
     protected override void Validate()
