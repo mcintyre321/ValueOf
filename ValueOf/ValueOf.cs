@@ -41,6 +41,10 @@ namespace ValueOf
 
         public TValue Value { get; protected set; }
 
+        public bool HasValue => Value != null && !Value.Equals(default(TValue));
+
+        public bool IsEmpty => !HasValue;
+
         public static TThis From(TValue item)
         {
             TThis x = Factory();
