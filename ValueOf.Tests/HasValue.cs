@@ -35,6 +35,7 @@ namespace ValueOf.Tests
             Assert.IsFalse(id.HasValue);
             Assert.IsTrue(id.IsEmpty);
         }
+
         [Test]
         public void HasValueWhenIntegerIdThenHasValueIsTrueAndIsEmptyIsFalse()
         {
