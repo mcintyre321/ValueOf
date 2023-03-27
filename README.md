@@ -1,5 +1,24 @@
 # ValueOf
 
+Deal with Primitive Obsession - define ValueObjects in a single line (of C#).
+
+---
+
+[![mcintyre321 - ValueOf](https://img.shields.io/static/v1?label=mcintyre321&message=ValueOf&color=blue&logo=github)](https://github.com/mcintyre321/ValueOf "Go to GitHub repo")
+[![License: BSD-3-Clause](https://img.shields.io/badge/License-BSD--3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![stars - ValueOf](https://img.shields.io/github/stars/mcintyre321/ValueOf?style=social)](https://github.com/mcintyre321/ValueOf)
+[![forks - ValueOf](https://img.shields.io/github/forks/mcintyre321/ValueOf?style=social)](https://github.com/mcintyre321/ValueOf)
+
+[![issues - ValueOf](https://img.shields.io/github/issues/mcintyre321/ValueOf)](https://github.com/mcintyre321/ValueOf/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/mcintyre321/ValueOf)](https://github.com/mcintyre321/ValueOf/pulls)
+[![GitHub contributors](https://img.shields.io/github/contributors/mcintyre321/ValueOf)](https://github.com/mcintyre321/ValueOf/graphs/contributors)
+[![GitHub last commit](https://img.shields.io/github/last-commit/mcintyre321/ValueOf)](https://github.com/mcintyre321/ValueOf/commits/master)
+
+[![NuGet](https://img.shields.io/nuget/v/ValueOf.svg)](https://www.nuget.org/packages/ValueOf)
+[![NuGet](https://img.shields.io/nuget/dt/ValueOf.svg)](https://www.nuget.org/packages/ValueOf)
+
+---
+
 > install-package ValueOf
 
 ## What is this library
