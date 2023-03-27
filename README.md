@@ -23,8 +23,13 @@ Deal with Primitive Obsession - define ValueObjects in a single line (of C#).
 
 ## What is this library
 
-> The Smell: Primitive Obsession is using primitive data types to represent domain ideas. For example, we use a String to represent a message, an Integer to represent an amount of money, or a Struct/Dictionary/Hash to represent a specific object.
-> The Fix: Typically, we introduce a ValueObject in place of the primitive data, then watch like magic as code from all over the system shows FeatureEnvySmell and wants to be on the new ValueObject. We move those methods, and everything becomes right with the world.
+> The Smell: Primitive Obsession is using primitive data types to represent domain ideas. For example, we use a String
+> to represent a message, an Integer to represent an amount of money, or a Struct/Dictionary/Hash to represent a
+> specific
+> object.
+> The Fix: Typically, we introduce a ValueObject in place of the primitive data, then watch like magic as code from all
+> over the system shows FeatureEnvySmell and wants to be on the new ValueObject. We move those methods, and everything
+> becomes right with the world.
 > - http://wiki.c2.com/?PrimitiveObsession
 
 ValueOf lets you define ValueObject Types in a single line of code. Use them everywhere to strengthen your codebase.
@@ -62,4 +67,5 @@ public class ValidatedClientRef : ValueOf<string, ValidatedClientRef>
 
 ## See Also
 
-If you liked this, you'll probably like another project of mine [OneOf](https://github.com/mcintyre321/OneOf) which provides Discriminated Unions for C#, allowing stronger compile time guarantees when writing branching logic.
+If you liked this, you'll probably like another project of mine [OneOf](https://github.com/mcintyre321/OneOf) which
+provides Discriminated Unions for C#, allowing stronger compile time guarantees when writing branching logic.
