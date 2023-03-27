@@ -29,29 +29,27 @@ Deal with Primitive Obsession - define ValueObjects in a single line (of C#).
 
 ValueOf lets you define ValueObject Types in a single line of code. Use them everywhere to strengthen your codebase.
 
-```
+```csharp
 public class EmailAddress : ValueOf<string, EmailAddress> { }
 
 ...
 
 EmailAddress emailAddress = EmailAddress.From("foo@bar.com");
-
 ```
 
 The ValueOf class implements `.Equals` and `.GetHashCode()` for you.
 
 You can use C# 7 Tuples for more complex Types with multiple values:
 
-```
-    public class Address : ValueOf<(string firstLine, string secondLine, Postcode postcode), Address> { }
-
+```csharp
+public class Address : ValueOf<(string firstLine, string secondLine, Postcode postcode), Address> { }
 ```
 
 ### Validation
 
 You can add validation to your Types by overriding the `protected void Validate() { } ` method:
 
-```
+```csharp
 public class ValidatedClientRef : ValueOf<string, ValidatedClientRef>
 {
     protected override void Validate()
@@ -60,7 +58,6 @@ public class ValidatedClientRef : ValueOf<string, ValidatedClientRef>
             throw new ArgumentException("Value cannot be null or empty");
     }
 }	
-
 ```
 
 ## See Also
